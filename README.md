@@ -2,6 +2,9 @@
 
 This repository shows a variety of GPT-3 prompts and its expected outputs. Note that "expected outputs" refer to the first completion I got when handing the prompt to GPT-3. Feel free to add your own completions via Pull Request.
 
+Authors: Thomas Übellacker (@thomasuebi)
+Last updated: 2021-01-15
+
 ## Email Classification
 
 ## Entity Recognition
