@@ -7,7 +7,7 @@ Last updated: 2021-01-15
 
 ## Email Classification
 
-## Entity Recognition
+## Named-Entity Recognition
 
 Extracting event information from email:
 
@@ -57,3 +57,19 @@ response = openai.Completion.create(
 ```
 
 ## Email Generation
+
+## Asking Questions That Can Not Be Answered Ad-Hoc
+
+```python
+restart_sequence = "]"
+response = openai.Completion.create(
+  engine="davinci",
+  prompt="To be able to quickly respond to emails, we find questions that we might want to look up in our documents before responding:\n\nDear Mr Boon,\nwas there already a deadline announced for the philosophy of science paper? In that case I probably missed it and would be curious where to find it.\nThank you in advance.\nThomas Übellacker\n\nIn order to respond to this email, we need to look up in our internal documents the following explicit, objective questions:\n[\"What is the deadline for the paper in 'Philosophy of Science'?\"]\n-----------\nDear Rachel,\nin our group the question occurred whether at the final exam in calculus we are allowed to use technology/a calculator or not at all.\nThank you in advance.\nKind regards,\nThomas Übellacker\n\nIn order to respond to this email, we need to look up in our internal documents the following explicit, objective questions:\n[\"Is it allowed to use technology in the final exam of Rachel's calculus course?\", \"Is it allowed to use a calculator in the final exam of Rachel's calculus course?\"]\n-----------\nHi Adi,\ntomorrow 10:15 works for me.\nHere's the link: meet.google.com/vnx-dwwc-xiy\nSee you then.\nThomas\n\nIn order to respond to this email, we need to look up in our internal documents the following explicit, objective questions:\n[]\n-----------\nDear Dr. Smirnov,\n\nI have written you about three weeks ago regarding a waiver for your UCM course SCI2033 Datamining that I really would like to attend in period 4.\n\nUnfortunately, I do not satisfy all prerequisites formally, but after carefully reading through the course material and talking with former course attendees, I am sure to be able to follow your course without any problem.\n\nBefore entering UCM I have worked as a software engineer at an Austrian TV channel group and am still working for a tech-startup where I am used to deal with a lot of data. I have a good understanding in data structures and databases plus their querying languages and have a solid knowhow in data preparation, data visualization, data crawling and applying basic machine learning models which I think will help me make the best out of your course.\n\nTherefore I kindly ask for a waiver to be able to attend your course next semester.\n\nI will then of course be pleased to answer any additional questions you wish to raise regarding this waiver request. Thank you in advance!\n\nYours sincerely,\n\nThomas Übellacker\ni6254894\n\nIn order to respond to this email, we need to look up in our internal documents the following explicit, objective questions:\n[",
+  temperature=0,
+  max_tokens=100,
+  top_p=1,
+  stop=["]", "\n"]
+)
+# Expected outcome:
+# ["Is there a waiver for the course 'Data Mining'?"
+```
