@@ -71,6 +71,25 @@ response = openai.Completion.create(
 
 ## Email Generation
 
+Email generation by input the preceding email and a list of bullet points
+
+```python
+response = openai.Completion.create(
+  engine="davinci-instruct-beta",
+  prompt="Create email from bullet points\n[[Preceding email:]]\nHi Thomas,\n\nfor the following season I want to order\n\n- 5 pieces of the coat with the product number 34534\n- 3 jeans with the number 43544\n\nThank you!\nJohn\n[[Bullets:]]\n- delivered by sunday\n[[Response Draft:]]",
+  temperature=0,
+  max_tokens=200,
+  top_p=1
+)
+# Expected outcome:
+# Hi John,
+#
+# I am happy to confirm that we will be able to deliver your order by Sunday.
+#
+# Thank you!
+# Thomas
+```
+
 ## Asking Questions That Can Not Be Answered Ad-Hoc
 
 ```python
