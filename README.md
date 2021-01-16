@@ -7,6 +7,19 @@ Last updated: 2021-01-15
 
 ## Email Classification
 
+```python
+# classification of an email from the Enron Dataset https://www.cs.cmu.edu/~enron/
+response = openai.Completion.create(
+  engine="davinci-instruct-beta",
+  prompt="Classify the email into one of the following categories: [\"Company Business, Strategy, etc. \", \"Purely Personal\", \"Personal but in professional context (e.g., it was good working with you)\", \"Logistic Arrangements (meeting scheduling, technical support, etc)\",  \"Employment arrangements (job seeking, hiring, recommendations, etc)\", \"Document editing/checking (collaboration)\", \"Empty message\"]\nEmail: \"Please review the attachment and let me know if you have any changes. The final document will provide a starting place for the year end review process.\"\nClassification: \"",
+  temperature=0,
+  max_tokens=64,
+  top_p=1
+)
+# Expected outcome:
+# Document editing/checking (collaboration)"
+```
+
 ## Named-Entity Recognition
 
 Extracting event information from email:
