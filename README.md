@@ -18,6 +18,8 @@ response = openai.Completion.create(
 # Expected outcome:
 # Document editing/checking (collaboration)"
 ```
+Token length: 97 + email length + output length
+(can vary depending on the length of categories)
 
 ## Named-Entity Recognition
 
@@ -40,6 +42,7 @@ response = openai.Completion.create(
 # "when": "Friday"
 
 ```
+Token length: 47 + incoming email length + output length
 
 Extracting order information from email:
 
@@ -67,6 +70,7 @@ response = openai.Completion.create(
 # "amount": 3
 # }
 ```
+Token length: 50 + email length + output length
 
 ## Email Generation
 
@@ -88,6 +92,7 @@ response = openai.Completion.create(
 # Thank you!
 # Thomas
 ```
+Token length: 25 + preceding email length + bullet points length + outcome email length
 
 ## Asking Questions That Can Not Be Answered Ad-Hoc
 
@@ -109,3 +114,4 @@ response = openai.Completion.create(
 # Deadline for philosophy of science paper
 # - Philosophy of science
 ```
+Token length: 38 + length of email + length of output
